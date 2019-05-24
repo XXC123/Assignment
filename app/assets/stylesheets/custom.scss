@@ -190,3 +190,18 @@ input {
         border-bottom: 1px solid $light-gray;
     }
 }
+
+
+.checkbox{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    span {
+        margin-left: 10px;
+        font-weight: normal;
+    }
+}
+
+.remember_me {
+    width: auto;
+    margin-left: 0;
+}

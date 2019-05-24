@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_045652) do
+ActiveRecord::Schema.define(version: 2019_05_24_132934) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_045652) do
     t.string "img_name"
     t.string "user"
     t.string "desc"
-    t.integer "location"
-    t.integer "category"
+    t.string "location"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

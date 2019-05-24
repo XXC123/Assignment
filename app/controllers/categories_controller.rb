@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 	def show
-		sql = "select * from courses where category=" + params[:id].to_s
+		sql = "select * from courses where category='" + params[:id].to_s + "';"
 	    @courses = ActiveRecord::Base.connection.execute(sql)
 	    @category = Category.find(params[:id])
 	end

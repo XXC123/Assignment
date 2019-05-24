@@ -9,12 +9,29 @@
 
     <%= f.label :Description %>
     <%= f.text_field :desc, class: "form-control" %>
+
+    <%= f.label :Categories %>
+    <% @categories.each do |item| %>
+        <label class="checkbox inline">
+            <input class="remember_me" type="checkbox" name="<%= ("category[" + item.id.to_s) %>]" />
+            <span><%= item.name %></span>
+        </label>
+    <% end %>
+
+    <%= f.label :Locatoins %>
+    <% @locations.each do |location| %>
+        <label class="checkbox inline">
+            <input class="remember_me" type="checkbox" name="<%= ("location[" + location.id.to_s) %>]" />
+            <span><%= location.name %></span>
+        </label>
+    <% end %>
     
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-    <br />
+    <%= f.label :Picture %>
     <span class="picture">
         <%= f.file_field :img_name %>
     </span>
+    
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">
