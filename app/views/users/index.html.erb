@@ -1,0 +1,15 @@
+<% provide(:title, "All coordinates") %>
+<h1>All Coordinates</h1>
+
+<ul class = "users">
+    <% @users.each do |user| %>
+        <li>
+            <%= gravatar_for user, size: 50 %>
+            <%= link_to user.name, user%>
+            <% if !!current_user && current_user.admin? %>
+                |
+                <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
+            <% end %>
+        </li>
+    <% end %>
+</ul>

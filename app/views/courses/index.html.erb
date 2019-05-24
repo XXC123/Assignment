@@ -1,0 +1,18 @@
+<% provide(:title, "All Courses") %>
+<h1>All Courses</h1>
+
+<ul class = "courses">
+    <% @courses.each do |course| %>
+        <li>
+            <%= link_to(image_tag("course.jpg", alt: course.name), "/") %>
+            <%= link_to course.name, ("courses/" + course.id.to_s) %>
+            Coordinate:<%= course.user %>
+            <%= course.desc %>
+            <% if !!current_user && current_user.admin? %>
+                |
+                <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
+
