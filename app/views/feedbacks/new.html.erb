@@ -1,0 +1,20 @@
+
+<% provide(:title, "Contact Us") %>
+<% provide(:button_text, "Send") %>
+
+<h1>Contact Us</h1>
+
+<%= form_for(@feedback) do |f| %>
+    <%= render "shared/error_messages", object: @feedback %>
+
+    <%= f.label :Name %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :Email %>
+    <%= f.email_field :email, class: "form-control" %>
+
+    <%= f.label :Feedback %>
+    <%= f.text_field :feedback, class: "form-control" %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
