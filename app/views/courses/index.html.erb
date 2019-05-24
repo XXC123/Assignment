@@ -8,7 +8,7 @@
             
             <%= link_to course.fetch("name"), ("courses/" + course.fetch("id").to_s) %>
             Coordinate:<%= course.fetch("user") %>
-            <%= course.desc %>
+            <%= course.fetch("desc") %>
             <% if !!current_user && current_user.admin? %>
                 |
                 <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
