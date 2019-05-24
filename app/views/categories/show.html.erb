@@ -1,14 +1,13 @@
-<% provide(:title, "All Courses") %>
-<h1>All Courses</h1>
+<% provide(:title, "Courses") %>
+<h1>courses in category: <%= @category.name %></h1>
 
 <ul class = "courses">
     <% @courses.each do |course| %>
         <li>
             <%= link_to(image_tag(course.fetch("img_name"), alt: course.fetch("name")), "/") %>
-            
-            <%= link_to course.fetch("name"), ("courses/" + course.fetch("id").to_s) %>
+            <%= link_to course.fetch("name"), ("/courses/" + course.fetch("id").to_s) %>
             Coordinate:<%= course.fetch("user") %>
-            <%= course.desc %>
+            Description:<%= course.fetch("desc") %>
             <% if !!current_user && current_user.admin? %>
                 |
                 <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
@@ -16,4 +15,3 @@
         </li>
     <% end %>
 </ul>
-

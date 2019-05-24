@@ -10,6 +10,10 @@ gem "bcrypt"
 gem "jquery-rails"
 gem "bootstrap-will_paginate"
 gem "bootstrap-sass"
+gem "carrierwave"
+gem "mini_magick"
+gem "fog-aws"
+gem "nokogiri"
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
