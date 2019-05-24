@@ -6,11 +6,21 @@
             <h1>
                 <%= link_to(image_tag(@course.fetch("img_name") || "course.jpg", alt: @course.fetch("name")), "/") %>
                 <br />
-                <%= @course.fetch("name") %>
+                Name: <%= @course.fetch("name") %>
                 <br />
-                Coordinate:<%= @course.fetch("user") %>
+                Coordinate:<%= @user.name if @user %>
                 <br />
-                Description:<%= @course.fetch("user") %>
+                Description:<%= @course.fetch("desc") %>
+                <br />
+                Created at: <%= time_ago_in_words(@course.fetch("created_at")) %> Ago
+                <br />
+                Categories: <%= @category%>
+                <br />
+                Locations: <%= @location %>
+                <% if (@user && current_user && @user.id == current_user.id) %>
+                    <br />
+                    <%= link_to "Edit This Course", edit_course_path(@course.fetch("id")) %>
+                <% end %>
             </h1>
         </section>
     </aside>

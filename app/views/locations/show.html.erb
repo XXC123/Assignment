@@ -3,15 +3,22 @@
 
 <ul class = "courses">
     <% @courses.each do |course| %>
+        <% user = course.fetch("user") %>
+        <% @user = User.find(user)  %>
         <li>
-            <%= link_to(image_tag(course.fetch("img_name"), alt: course.fetch("name")), "/") %>
-            <%= link_to course.fetch("name"), ("/courses/" + course.fetch("id").to_s) %>
-            Coordinate:<%= course.fetch("user") %>
-            Description:<%= course.fetch("desc") %>
+            <%= link_to(image_tag(course.fetch("img_name") || "course.jpg", alt: course.fetch("name")), "/") %>
+            <br />
+            Name:<%= link_to course.fetch("name"), ("/courses/" + course.fetch("id").to_s) %>
+            <br />
+            Coordinate:<%= @user.name %>
+            <br />
+            Description: <%= course.fetch("desc") %>
+            <br />
+            Created at: <%= time_ago_in_words(course.fetch("created_at")) %> Ago
+            <br />
             <% if !!current_user && current_user.admin? %>
                 |
                 <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
             <% end %>
         </li>
     <% end %>
-</ul>

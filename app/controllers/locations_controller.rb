@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
 	def show
-		sql = "select * from courses where location=" + params[:id].to_s
+		sql = "select * from courses where INSTR(location,'" + params[:id].to_s + "') > 0;"
 	    @courses = ActiveRecord::Base.connection.execute(sql)
 	    @location = Location.find(params[:id])
 	end
