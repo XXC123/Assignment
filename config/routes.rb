@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     post   "/login",      to: "sessions#create"
     delete "/logout",     to: "sessions#destroy"
 
+    get    "/thumbupdown",to: "thumb_up_downs#new"
+
     resources :feedbacks
     resources :courses
     resources :users

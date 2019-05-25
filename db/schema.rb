@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_182045) do
+ActiveRecord::Schema.define(version: 2019_05_25_121129) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_182045) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "prerequisite"
-    t.integer "thumb_ups"
-    t.integer "thumb_downs"
+    t.integer "thumb_ups", default: 0
+    t.integer "thumb_downs", default: 0
     t.string "img_name"
     t.string "user"
     t.string "desc"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2019_05_24_182045) do
     t.string "password"
     t.string "password_digest"
     t.boolean "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user"
+    t.integer "course"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

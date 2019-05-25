@@ -20,7 +20,29 @@
                 |
                 <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
             <% end %>
+            <br />
+            <div>
+                <% if !logged_in? %>
+                    ups
+                <% else %>
+                    <%= link_to "ups", ("/thumbupdown?type=1&id=" + course.fetch("id").to_s) %>
+                <% end %>
+                <span>
+                    <%=course.fetch("thumb_ups").to_i %>
+                </span>
+
+                <% if !logged_in? %>
+                    downs
+                <% else %>
+                    <%= link_to "downs", ("/thumbupdown?type=2&id=" + course.fetch("id").to_s) %>
+                <% end %>
+                <span>
+                    <%= course.fetch("thumb_downs").to_i %>
+                </span>
+            </div>            
+            
         </li>
+
     <% end %>
 </ul>
 
