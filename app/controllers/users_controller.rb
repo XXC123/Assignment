@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @courses = Course.where("user= :id", id: @user.id)
     end
 
     def create

@@ -1,12 +1,51 @@
 
 <% provide(:title, @user.name) %>
-<div class = "row">
-    <aside class = "col-md-4">
-        <section class = "user_info">
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>
-            </h1>
-        </section>
-    </aside>
+<div>
+ <%= gravatar_for @user %>
+  <%= @user.name %>
+
+<div>
+<div class="divider"></div>
+<h1> All My Courses </h1>
+<ul class = "courses">
+    <% @courses.each do |course| %>
+        <% user = course[:user] %>
+        <% @user = User.find(user)  %>
+        <li>
+            <%= link_to(image_tag(course[:img_name] || "course.jpg", alt: course[:name]), "/") %>
+            <br />
+            Name:<%= course[:name] %>
+            <br />
+            Coordinate:<%= @user.name %>
+            <br />
+            Description: <%= course[:desc] %>
+            <br />
+            Created at: <%= time_ago_in_words(course[:created_at]) %> Ago
+            <br />
+            
+            <div>
+                    ups
+                <span>
+                    <%= course[:thumb_ups] %>
+                </span>
+                    downs
+                <span>
+                    <%= course[:thumb_downs] %>
+                </span>
+            </div>   
+            <% if (@user && current_user && @user.id == current_user.id) %>
+                <br />
+                <%= link_to "Edit This Course", edit_course_path(course[:id]) %>
+            <% end %>
+            <% if !!current_user && current_user.admin? %>
+                |
+                <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?" }%>
+            <% end %>
+            <br />
+        </li>
+
+    <% end %>
+</ul>
+<div>
+    
 </div>

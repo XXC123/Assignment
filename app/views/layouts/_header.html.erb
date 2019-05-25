@@ -4,7 +4,13 @@
 		<%= link_to("Course App", root_path, id: "logo") %>
 		<nav>
 			<ul class = "nav navbar-nav navbar-right">
-				<li><%= link_to("Home", root_path) %></li>
+			    <li>
+			        <% if logged_in? %>
+			            <%= link_to("Home", "/courses") %>
+			        <% else %>
+				        <%= link_to("Home", root_path) %>
+				    <% end  %>
+				</li>
                 <li class = "dropdown">
                     <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
                         Category <b class = "caret"></b>
